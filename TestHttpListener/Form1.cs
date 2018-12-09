@@ -83,7 +83,7 @@ namespace TestHttpListener
 
                         if (request.HasEntityBody)
                         {
-                            
+
                             if (request.ContentType != null)
                                 labelContentType.Text = request.ContentType + "\n";
                             else
@@ -99,7 +99,10 @@ namespace TestHttpListener
 
                         }
                         else
+                        {
                             label1.Text = "No content";
+                            labelContentType.Text = "ContentType = ?\n";
+                        }
 
                         HttpListenerResponse response = context.Response;
 

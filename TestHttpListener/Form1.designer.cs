@@ -44,7 +44,6 @@
             this.textBoxResponse = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
             this.labelHeders = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -53,7 +52,7 @@
             // labelReqQuerry
             // 
             this.labelReqQuerry.AutoSize = true;
-            this.labelReqQuerry.Location = new System.Drawing.Point(236, 168);
+            this.labelReqQuerry.Location = new System.Drawing.Point(236, 207);
             this.labelReqQuerry.Name = "labelReqQuerry";
             this.labelReqQuerry.Size = new System.Drawing.Size(124, 13);
             this.labelReqQuerry.TabIndex = 5;
@@ -122,9 +121,6 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.labelContentType);
-            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.textBoxResponse);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
@@ -157,7 +153,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(15, 55);
+            this.label10.Location = new System.Drawing.Point(63, 18);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(137, 16);
             this.label10.TabIndex = 26;
@@ -166,7 +162,7 @@
             // labelContentType
             // 
             this.labelContentType.AutoSize = true;
-            this.labelContentType.Location = new System.Drawing.Point(211, 57);
+            this.labelContentType.Location = new System.Drawing.Point(99, 266);
             this.labelContentType.Name = "labelContentType";
             this.labelContentType.Size = new System.Drawing.Size(27, 13);
             this.labelContentType.TabIndex = 25;
@@ -176,7 +172,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(158, 57);
+            this.label9.Location = new System.Drawing.Point(46, 266);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 24;
@@ -211,16 +207,6 @@
             this.panel3.Size = new System.Drawing.Size(395, 211);
             this.panel3.TabIndex = 21;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label11.Location = new System.Drawing.Point(70, 4);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 20);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Sender";
-            // 
             // labelHeders
             // 
             this.labelHeders.AutoSize = true;
@@ -236,8 +222,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 572);
             this.Controls.Add(this.labelHeders);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.labelContentType);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.labelReqQuerry);
             this.Controls.Add(this.labelReqParam);
@@ -268,7 +256,6 @@
         private System.Windows.Forms.Label labelContentType;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label labelHeders;

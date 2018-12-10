@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelReqQuerry = new System.Windows.Forms.Label();
             this.labelReqParam = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -38,30 +37,21 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.textBoxResponse = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.labelContentType = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBoxResponse = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelHeders = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelReqQuerry
-            // 
-            this.labelReqQuerry.AutoSize = true;
-            this.labelReqQuerry.Location = new System.Drawing.Point(236, 207);
-            this.labelReqQuerry.Name = "labelReqQuerry";
-            this.labelReqQuerry.Size = new System.Drawing.Size(124, 13);
-            this.labelReqQuerry.TabIndex = 5;
-            this.labelReqQuerry.Text = "Querry String Parameters";
-            // 
             // labelReqParam
             // 
             this.labelReqParam.AutoSize = true;
-            this.labelReqParam.Location = new System.Drawing.Point(236, 54);
+            this.labelReqParam.Location = new System.Drawing.Point(245, 54);
             this.labelReqParam.Name = "labelReqParam";
             this.labelReqParam.Size = new System.Drawing.Size(103, 13);
             this.labelReqParam.TabIndex = 13;
@@ -149,6 +139,25 @@
             this.label12.TabIndex = 27;
             this.label12.Text = "To run the listener, the program must be run with administrator privileges";
             // 
+            // textBoxResponse
+            // 
+            this.textBoxResponse.Location = new System.Drawing.Point(10, 156);
+            this.textBoxResponse.Multiline = true;
+            this.textBoxResponse.Name = "textBoxResponse";
+            this.textBoxResponse.Size = new System.Drawing.Size(395, 259);
+            this.textBoxResponse.TabIndex = 23;
+            this.textBoxResponse.Text = "Example response content\r\nThe program must be run with administrator privileges";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label8.Location = new System.Drawing.Point(123, 137);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(136, 16);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Response to Send";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -178,25 +187,6 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Content";
             // 
-            // textBoxResponse
-            // 
-            this.textBoxResponse.Location = new System.Drawing.Point(10, 271);
-            this.textBoxResponse.Multiline = true;
-            this.textBoxResponse.Name = "textBoxResponse";
-            this.textBoxResponse.Size = new System.Drawing.Size(395, 144);
-            this.textBoxResponse.TabIndex = 23;
-            this.textBoxResponse.Text = "Example response content\r\nThe program must be run with administrator privileges";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(128, 248);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(136, 16);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "Response to Send";
-            // 
             // panel3
             // 
             this.panel3.AutoScroll = true;
@@ -210,7 +200,7 @@
             // labelHeders
             // 
             this.labelHeders.AutoSize = true;
-            this.labelHeders.Location = new System.Drawing.Point(22, 54);
+            this.labelHeders.Location = new System.Drawing.Point(12, 54);
             this.labelHeders.Name = "labelHeders";
             this.labelHeders.Size = new System.Drawing.Size(41, 13);
             this.labelHeders.TabIndex = 15;
@@ -227,7 +217,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.labelReqQuerry);
             this.Controls.Add(this.labelReqParam);
             this.Controls.Add(this.panel3);
             this.Name = "Form1";
@@ -242,7 +231,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label labelReqQuerry;
         private System.Windows.Forms.Label labelReqParam;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;

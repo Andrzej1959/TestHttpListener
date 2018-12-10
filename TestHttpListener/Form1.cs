@@ -44,17 +44,16 @@ namespace TestHttpListener
                         HttpListenerContext context = await listener.GetContextAsync();
                         HttpListenerRequest request = context.Request;
 
-                        if (request.QueryString.HasKeys()) labelReqQuerry.Text = "";
-                        else
-                            labelReqQuerry.Text = "QueryString has no keys";
-
-                        for (int k = 0; k < request.QueryString.Count; k++)
-                            labelReqQuerry.Text += request.QueryString.GetKey(k) + "  " + (request.QueryString.GetValues(k))[0] + "\n";
-
-                        labelReqParam.Text = "UserHostName: " + request.UserHostName;
+                        
+                        labelReqParam.Text = "Parametry\nUserHostName: " + request.UserHostName;
                         labelReqParam.Text += "\nRaw Url: " + request.RawUrl;
                         labelReqParam.Text += "\nHTTP Method: " + request.HttpMethod;
                         labelReqParam.Text += "\nProtocol Version: " + request.ProtocolVersion.ToString();
+                        labelReqParam.Text += "\nServiceName: " + request.ServiceName;
+                        labelReqParam.Text += "\nLocalEndPoint: " + request.LocalEndPoint;
+                        labelReqParam.Text += "\nRemoteEndPoint: " + request.RemoteEndPoint;
+                        labelReqParam.Text += "\nContentType: " + request.ContentType;
+                        labelReqParam.Text += "\nUserAgent: " + request.UserAgent;
 
                         var heders = request.Headers;
 
@@ -65,21 +64,17 @@ namespace TestHttpListener
                             foreach (var value in heders.GetValues(k))
                                 labelHeders.Text += value;
                             labelHeders.Text += "\n";
-
                         }
 
+                        if (request.QueryString.HasKeys()) labelHeders.Text += "\n------->Query String: \n";
+                        else
+                            labelHeders.Text = "QueryString has no keys";
 
-                        /*
+                        for (int k = 0; k < request.QueryString.Count; k++)
+                            labelHeders.Text += request.QueryString.GetKey(k) + "  " + (request.QueryString.GetValues(k))[0] + "\n";
 
-                            foreach (var heder in heders.AllKeys)
-                        {
-                            label1.Text += heder. + " = ";
-                            foreach (var val in heder.Value)
-                                label1.Text += val + "  ";
-                            label1.Text += "\n";
-                        }
 
-    */
+
 
                         if (request.HasEntityBody)
                         {
@@ -106,17 +101,21 @@ namespace TestHttpListener
 
                         HttpListenerResponse response = context.Response;
 
+                        response.Headers.Add("ServerHeader1", "Heager value");
+                   
+
+
                         byte[] buffer = System.Text.Encoding.UTF8.GetBytes(textBoxResponse.Text);
                         // Get a response stream and write the response to it.
                         response.ContentLength64 = buffer.Length;
                         System.IO.Stream output = response.OutputStream;
+
                         output.Write(buffer, 0, buffer.Length);
                         output.Close();
 
                     }
                 }
-               // else
-                 //   listener.Stop();
+
             }
             catch (Exception exce)
             {

@@ -101,10 +101,8 @@ namespace TestHttpListener
 
                         HttpListenerResponse response = context.Response;
 
-                        response.Headers.Add("ServerHeader1", "Heager value");
+                        response.Headers.Add("ServerHeader1", "Header value");
                    
-
-
                         byte[] buffer = System.Text.Encoding.UTF8.GetBytes(textBoxResponse.Text);
                         // Get a response stream and write the response to it.
                         response.ContentLength64 = buffer.Length;

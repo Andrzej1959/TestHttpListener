@@ -68,7 +68,7 @@ namespace TestHttpListener
 
                         if (request.QueryString.HasKeys()) labelHeders.Text += "\n------->Query String: \n";
                         else
-                            labelHeders.Text = "QueryString has no keys";
+                            labelHeders.Text += "QueryString has no keys";
 
                         for (int k = 0; k < request.QueryString.Count; k++)
                             labelHeders.Text += request.QueryString.GetKey(k) + "  " + (request.QueryString.GetValues(k))[0] + "\n";

@@ -51,7 +51,7 @@
             // labelReqParam
             // 
             this.labelReqParam.AutoSize = true;
-            this.labelReqParam.Location = new System.Drawing.Point(245, 54);
+            this.labelReqParam.Location = new System.Drawing.Point(378, 54);
             this.labelReqParam.Name = "labelReqParam";
             this.labelReqParam.Size = new System.Drawing.Size(103, 13);
             this.labelReqParam.TabIndex = 13;
@@ -82,7 +82,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(650, 3);
+            this.label4.Location = new System.Drawing.Point(800, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 20);
             this.label4.TabIndex = 18;
@@ -117,7 +117,7 @@
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.panel2.Location = new System.Drawing.Point(476, 63);
+            this.panel2.Location = new System.Drawing.Point(626, 63);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(448, 451);
             this.panel2.TabIndex = 22;
@@ -200,7 +200,7 @@
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(25, 292);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(410, 211);
+            this.panel3.Size = new System.Drawing.Size(579, 211);
             this.panel3.TabIndex = 21;
             // 
             // labelHeders
@@ -216,7 +216,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 532);
+            this.ClientSize = new System.Drawing.Size(1120, 532);
             this.Controls.Add(this.labelHeders);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.labelContentType);

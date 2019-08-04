@@ -17,21 +17,21 @@ namespace TestHttpListener
         public Form1()
         {
             InitializeComponent();
-        }
-       
+        }       
         
         HttpListener listener;
-        private async void checkBox1_CheckedChanged(object sender, EventArgs e)
+        //private  void checkBox1_CheckedChanged(object sender, EventArgs e)    // Synchroniczny
+        private async void checkBox1_CheckedChanged(object sender, EventArgs e) // Asynchroniczny
         {
             try
             {
-                if (listener == null)
+                if (listener == null & ((CheckBox)sender).Checked)
                 {
                     listener = new HttpListener();
                     //listener.Prefixes.Add("http://*:80/");
                     //listener.Prefixes.Add("http://*:1777/");
-                    listener.Prefixes.Add("http://*:" + textBox1.Text + "/");
-                    textBox1.Enabled = false;
+                    listener.Prefixes.Add("http://*:" + textBoxNrPortu.Text + "/");
+                    textBoxNrPortu.Enabled = false;
                 }
 
                 if (((CheckBox)sender).Checked)
@@ -41,44 +41,45 @@ namespace TestHttpListener
 
                     while (((CheckBox)sender).Checked)   // Jak nie działa sprawdzić ip klienta
                     {
-                        HttpListenerContext context = await listener.GetContextAsync();
+                        HttpListenerContext context = await listener.GetContextAsync(); // Asynchroniczny
+                        //HttpListenerContext context = listener.GetContext();          // Synchroniczny          
                         HttpListenerRequest request = context.Request;
 
-                        
-                        labelReqParam.Text = "Parametry\nUserHostName: " + request.UserHostName;
-                        labelReqParam.Text += "\nRaw Url: " + request.RawUrl;
-                        labelReqParam.Text += "\nHTTP Method: " + request.HttpMethod;
-                        labelReqParam.Text += "\nProtocol Version: " + request.ProtocolVersion.ToString();
-                        labelReqParam.Text += "\nServiceName: " + request.ServiceName;
-                        labelReqParam.Text += "\nLocalEndPoint: " + request.LocalEndPoint;
-                        labelReqParam.Text += "\nRemoteEndPoint: " + request.RemoteEndPoint;
-                        labelReqParam.Text += "\nContentType: " + request.ContentType;
-                        labelReqParam.Text += "\nUserAgent: " + request.UserAgent;
+                        string parametryText;
+                        parametryText = "-------->Request Parameters\nUserHostName: " + request.UserHostName;
+                        parametryText += "\nRaw Url: " + request.RawUrl;
+                        parametryText += "\nHTTP Method: " + request.HttpMethod;
+                        parametryText += "\nProtocol Version: " + request.ProtocolVersion.ToString();
+                        parametryText += "\nServiceName: " + request.ServiceName;
+                        parametryText += "\nLocalEndPoint: " + request.LocalEndPoint;
+                        parametryText += "\nRemoteEndPoint: " + request.RemoteEndPoint;
+                        parametryText += "\nContentType: " + request.ContentType;
+                        parametryText += "\nUserAgent: " + request.UserAgent;
+
+                        labelReqParam.Text = parametryText;
 
                         var heders = request.Headers;
-
-                        labelHeders.Text = "-------->Request Heders:\n";
+                        string hedersText;
+                        hedersText = "-------->Request Heders:\n";
                         for (int k = 0; k < heders.Count; k++)
                         {
-                            labelHeders.Text += heders.GetKey(k) + ": ";
+                            hedersText += heders.GetKey(k) + ": ";
                             foreach (var value in heders.GetValues(k))
-                                labelHeders.Text += value;
-                            labelHeders.Text += "\n";
+                                hedersText += value;
+                            hedersText += "\n";
                         }
 
-                        if (request.QueryString.HasKeys()) labelHeders.Text += "\n------->Query String: \n";
+                        if (request.QueryString.HasKeys()) hedersText += "\n------->Query String: \n";
                         else
-                            labelHeders.Text += "QueryString has no keys";
+                            hedersText += "QueryString has no keys";
 
                         for (int k = 0; k < request.QueryString.Count; k++)
-                            labelHeders.Text += request.QueryString.GetKey(k) + "  " + (request.QueryString.GetValues(k))[0] + "\n";
+                            hedersText += request.QueryString.GetKey(k) + " = " + (request.QueryString.GetValues(k))[0] + "\n";
 
-
-
+                        labelHeders.Text = hedersText;
 
                         if (request.HasEntityBody)
                         {
-
                             if (request.ContentType != null)
                                 labelContentType.Text = request.ContentType + "\n";
                             else
@@ -90,8 +91,7 @@ namespace TestHttpListener
                             string s = reader.ReadToEnd();
                             label1.Text = s;
                             body.Close();
-                            reader.Close();
-
+                            reader.Close();                            
                         }
                         else
                         {
@@ -100,20 +100,18 @@ namespace TestHttpListener
                         }
 
                         HttpListenerResponse response = context.Response;
-
+                        response.Headers.Add(HttpResponseHeader.ContentType, "text/plain");
                         response.Headers.Add("ServerHeader1", "Header value");
-                   
-                        byte[] buffer = System.Text.Encoding.UTF8.GetBytes(textBoxResponse.Text);
+                        string responseText = textBoxResponse.Text + "\n\n" + parametryText + "\n\n" + hedersText;
+                        byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseText);
                         // Get a response stream and write the response to it.
                         response.ContentLength64 = buffer.Length;
                         System.IO.Stream output = response.OutputStream;
 
                         output.Write(buffer, 0, buffer.Length);
                         output.Close();
-
                     }
                 }
-
             }
             catch (Exception exce)
             {
